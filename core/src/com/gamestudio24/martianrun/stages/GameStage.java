@@ -31,6 +31,8 @@ import com.gamestudio24.martianrun.enums.Difficulty;
 import com.gamestudio24.martianrun.enums.GameState;
 import com.gamestudio24.martianrun.utils.*;
 
+import static com.gamestudio24.martianrun.utils.Constants.RUNNER_Y;
+
 public class GameStage extends Stage implements ContactListener {
 
     private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
@@ -327,8 +329,12 @@ public class GameStage extends Stage implements ContactListener {
 
         if (rightSideTouched(touchPoint.x, touchPoint.y)) {
             runner.jump();
+            //will this make it float?
+            //RUNNER_Y = 4;
+
         } else if (leftSideTouched(touchPoint.x, touchPoint.y)) {
             runner.dodge();
+            //RUNNER_Y = 2;
         }
 
         return super.touchDown(x, y, pointer, button);
@@ -342,7 +348,12 @@ public class GameStage extends Stage implements ContactListener {
         }
 
         if (runner.isDodging()) {
-            runner.stopDodge();
+            if (rightSideTouched(touchPoint.x, touchPoint.y)) {
+                runner.stopDodge();
+                //or
+                //runner.jump();
+            }
+
         }
 
         return super.touchUp(screenX, screenY, pointer, button);
@@ -404,6 +415,8 @@ public class GameStage extends Stage implements ContactListener {
             GameManager.getInstance().addJumpCount(runner.getJumpCount());
         } else if ((BodyUtils.bodyIsRunner(a) && BodyUtils.bodyIsGround(b)) ||
                 (BodyUtils.bodyIsGround(a) && BodyUtils.bodyIsRunner(b))) {
+            //try adjusting this to force levetation
+            //bad bc you cant ever jump/duck again afterwards
             runner.landed();
         }
 

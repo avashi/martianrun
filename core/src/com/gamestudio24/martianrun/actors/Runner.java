@@ -30,6 +30,9 @@ import com.gamestudio24.martianrun.utils.AudioUtils;
 import com.gamestudio24.martianrun.utils.Constants;
 import com.gamestudio24.martianrun.utils.GameManager;
 
+import static com.gamestudio24.martianrun.utils.Constants.GROUND_HEIGHT;
+import static com.gamestudio24.martianrun.utils.Constants.RUNNER_Y;
+
 public class Runner extends GameActor {
 
     private boolean dodging;
@@ -93,12 +96,23 @@ public class Runner extends GameActor {
         if (!(jumping || dodging || hit)) {
             body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
             jumping = true;
+//            adding to this to levetate?
+//            body.setTransform(2,4,0);
             AudioUtils.getInstance().playSound(jumpSound);
             jumpCount++;
+            // ********************************************************************************************************************************8
+//            body.setTransform(getUserData().getJumpingLinearImpulse(), getUserData().getDodgeAngle()*-1);
+//            jumping = true;
+//            AudioUtils.getInstance().playSound(jumpSound);
+//            jumpCount++;
+            //**********************************************************************************************************************************
+
         }
 
     }
 
+    //messed around with this... can we get the character to stay levetated?.. changed false to true.. bad idea.. just made the dood not even move..
+    //none of the controls worked
     public void landed() {
         jumping = false;
     }

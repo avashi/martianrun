@@ -51,6 +51,9 @@ public class WorldUtils {
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(Constants.RUNNER_WIDTH / 2, Constants.RUNNER_HEIGHT / 2);
         Body body = world.createBody(bodyDef);
+
+        //New GRAVITY STUFF... changing this next line
+        //Note: Hahahah gravity is definitely necessary
         body.setGravityScale(Constants.RUNNER_GRAVITY_SCALE);
         body.createFixture(shape, Constants.RUNNER_DENSITY);
         body.resetMassData();
