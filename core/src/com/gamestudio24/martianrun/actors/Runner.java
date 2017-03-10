@@ -33,7 +33,7 @@ import com.gamestudio24.martianrun.utils.GameManager;
 import static com.gamestudio24.martianrun.utils.Constants.GROUND_HEIGHT;
 import static com.gamestudio24.martianrun.utils.Constants.RUNNER_Y;
 
-public class Runner extends GameActor {
+public class Runner extends GameActor implements bluetoothConnector{
 
     private boolean dodging;
     private boolean jumping;
@@ -90,8 +90,21 @@ public class Runner extends GameActor {
     public RunnerUserData getUserData() {
         return (RunnerUserData) userData;
     }
+//*****************************************************************************************************************************************
+//*****************************************************************************************************************************************
+    //*****************************************************************************************************************************************
+    //*****************************************************************************************************************************************
+    //Once bluetooth works: will change Jump to essentially the same thing as dodge but in opposite direction.. somehow disable gravity? stuck here
+    //nevermind.. found a fix: only can move down and then back to normal... so just get rid of jump feature? <<probably
 
-    public void jump() {
+    public void jump(double dataIn2) {
+
+//        //changed up what jump method actually does
+//        if (!(jumping || hit) || dataIn2<0) {
+////            body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
+////            dodging = true;
+//            runner.stopDodge();
+//        }
 
         if (!(jumping || dodging || hit)) {
             body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
@@ -116,13 +129,26 @@ public class Runner extends GameActor {
     public void landed() {
         jumping = false;
     }
+/*
 
-    public void dodge() {
-        if (!(jumping || hit)) {
+
+*
+* *
+* *
+* *
+* *
+* **
+* *
+ */
+    @Override
+    public void dodge(double dataIn) {
+        if (!(jumping || hit) || dataIn<0) {
             body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
             dodging = true;
         }
     }
+
+    @Override
 
     public void stopDodge() {
         dodging = false;
