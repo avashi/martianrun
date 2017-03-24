@@ -36,7 +36,7 @@ public class Constants {
 
     public static final float RUNNER_X = 2;
     //adjust this in the actual code if/when jump/dodge; original: GROUND_Y + GROUND_HEIGHT
-    public static final float RUNNER_Y = 10;
+    public static final float RUNNER_Y = 3;
     public static final float RUNNER_WIDTH = 1f;
     public static final float RUNNER_HEIGHT = 2f;
     //original = 3f

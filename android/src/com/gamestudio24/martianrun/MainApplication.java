@@ -17,36 +17,19 @@
 package com.gamestudio24.martianrun;
 
 import android.app.Application;
-import com.gamestudio24.martianrun.android.R;
-import com.google.android.gms.analytics.GoogleAnalytics;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.BluetoothServerSocket;
-import android.bluetooth.BluetoothSocket;
 import android.content.Context;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.gamestudio24.martianrun.actors.bluetoothConnector;
+import com.gamestudio24.martianrun.android.R;
+import com.google.android.gms.analytics.GoogleAnalytics;
+
+import java.io.DataInputStream;
 
 public class MainApplication extends Application {
-    private BluetoothSocket connection;
-    private DataInputStream iis;
-    private double sensorX = 0;
-    private BluetoothServerSocket myServerSocket = null;
-    //private BluetoothServerSocket myServerSocket_r = null;
-    private BluetoothAdapter mBtAdapter = null;
-    BluetoothSocket myBSock_l = null;
-    private static final UUID MY_UUID=
-            UUID.fromString("5db4284e-01ff-435c-9b80-2df4e78bd214"); //L, motorola or nexus 5.
-    private static final String NAME = "BluetoothManager";
-    AsyncTask<Integer, Integer, Integer> asynctask;
 
 
     //bluetooth manager whatever
@@ -121,4 +104,9 @@ public class MainApplication extends Application {
     }
 
 };
+
+
+    }
+
+}
 

@@ -33,7 +33,7 @@ import com.gamestudio24.martianrun.utils.GameManager;
 import static com.gamestudio24.martianrun.utils.Constants.GROUND_HEIGHT;
 import static com.gamestudio24.martianrun.utils.Constants.RUNNER_Y;
 
-public class Runner extends GameActor implements bluetoothConnector{
+public class Runner extends GameActor {
 
     private boolean dodging;
     private boolean jumping;
@@ -109,6 +109,7 @@ public class Runner extends GameActor implements bluetoothConnector{
             body.setTransform(getUserData().getRunningPosition(), 0f);
         }
 
+
 //        if (!(jumping || dodging || hit)) {
 //            body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
 //            jumping = true;
@@ -132,26 +133,13 @@ public class Runner extends GameActor implements bluetoothConnector{
     public void landed() {
         jumping = false;
     }
-/*
 
-
-*
-* *
-* *
-* *
-* *
-* **
-* *
- */
-    @Override
-    public void dodge(double dataIn) {
-        if (!(jumping || hit) || dataIn<0) {
+    public void dodge() {
+        if (!(jumping || hit)) {
             body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
             dodging = true;
         }
     }
-
-    @Override
 
     public void stopDodge() {
         dodging = false;

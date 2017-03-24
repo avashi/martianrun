@@ -14,12 +14,8 @@
  * limitations under the License.
  */
 
-
 package com.gamestudio24.martianrun;
-//
-import java.io.DataInputStream;
-//import android.bluetooth.BluetoothManager;
-//import android.bluetooth.BluetoothSocket;
+
 import com.badlogic.gdx.Game;
 import com.gamestudio24.martianrun.screens.GameScreen;
 import com.gamestudio24.martianrun.utils.AssetsManager;

@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.gamestudio24.cityescape.android"
         targetSdkVersion 21
-        minSdkVersion 18 //was 9
+        minSdkVersion 9
         versionCode 21
         versionName "1.5.1"
     }

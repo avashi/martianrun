@@ -16,14 +16,6 @@
 
 package com.gamestudio24.martianrun.stages;
 
-
-
-//import java.io.DataInputStream;
-//import android.bluetooth.BluetoothManager;
-//import android.bluetooth.BluetoothSocket;
-
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Rectangle;
@@ -39,13 +31,8 @@ import com.gamestudio24.martianrun.enums.Difficulty;
 import com.gamestudio24.martianrun.enums.GameState;
 import com.gamestudio24.martianrun.utils.*;
 
-
-import sun.rmi.runtime.Log;
-
 import static com.gamestudio24.martianrun.utils.Constants.RUNNER_Y;
-//this is where stuff needs to change
 
-//Had sensorEventListener in here but not a good idea... plus thats for sensing so dumb
 public class GameStage extends Stage implements ContactListener {
 
     private static final int VIEWPORT_WIDTH = Constants.APP_WIDTH;
@@ -77,14 +64,6 @@ public class GameStage extends Stage implements ContactListener {
     private boolean tutorialShown;
 
     private Vector3 touchPoint;
-
-
-    //ADDING STUFF HERE
-//**********************************************************************************
-   // private DataInputStream iis;
-//******************************************************************************8***
-
-
 
     public GameStage() {
         super(new ScalingViewport(Scaling.stretch, VIEWPORT_WIDTH, VIEWPORT_HEIGHT,
@@ -166,8 +145,6 @@ public class GameStage extends Stage implements ContactListener {
         setUpAbout();
         setUpShare();
         setUpAchievements();
-        //final BluetoothManager bluetoothManager  = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-
     }
 
     private void setUpStart() {
@@ -233,38 +210,6 @@ public class GameStage extends Stage implements ContactListener {
         setUpPauseLabel();
         createEnemy();
     }
-
-
-
-    //******************************************************************************************************
-//    final BluetoothManager bluetoothManager  = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-//
-//    //create a bluetooth server socket on galaxy and then a socket on the zte...
-//    BluetoothAdapter bluetoothAdapter= bluetoothManager.getAdapter();
-//    try {
-//        Log.e("CONNECT", "ATTEMPTING CONNECTION");
-//        connection = bluetoothAdapter.getRemoteDevice("C0:11:73:F7:12:58").createRfcommSocketToServiceRecord(MY_UUID);
-//        //BluetoothServerSocket bluetoothServerSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord("aksal", UUID.randomUUID());
-//        //BluetoothSocket connection = bluetoothServerSocket.accept(60000);
-//        Toast.makeText(this, "Attempting Connection...", Toast.LENGTH_LONG).show();
-//
-//        connection.connect();
-//        iis = new DataInputStream(connection.getInputStream());
-//    } catch(Exception e){
-//        Log.e("ERROR", e.getMessage());
-//    }
-//
-//    Log.e("Log","Trying Thread");
-//    Thread gyroThread1 = new Thread(new GyroThreadx());
-//    gyroThread1.start();
-
-
-
-
-
-
-
-
 
     private void setUpRunner() {
         if (runner != null) {
@@ -384,11 +329,12 @@ public class GameStage extends Stage implements ContactListener {
 
         if (rightSideTouched(touchPoint.x, touchPoint.y)) {
             runner.jump(1);
+
             //will this make it float?
             //RUNNER_Y = 4;
 
         } else if (leftSideTouched(touchPoint.x, touchPoint.y)) {
-            runner.dodge(-1);
+            runner.dodge();
             //RUNNER_Y = 2;
         }
 
