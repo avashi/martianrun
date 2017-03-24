@@ -53,6 +53,9 @@ public class MainApplication extends Application {
     //*********************
 //listen usingrfcommwithservicerecord
     //reciever socet
+
+    //TODO: unfortunately the Galaxy isnt the reciever anymore... bc the ZTE doesnt have a gyroscope the Galaxy will need to be the sender
+    //TODO: Becuase of this, this code (the martian runner code) will need to be on the ZTE, so the ZTE is now the receiver and the Galaxy the sender
      //*********************
     bluetoothConnector listener;
     @Override
@@ -91,13 +94,11 @@ public class MainApplication extends Application {
             Log.e("ERROR", e.getMessage());
         }
 
-
         Thread gyroThread1 = new Thread(new GyroThreadx());
         gyroThread1.start();
     }
 
     public class GyroThreadx implements Runnable {
-
         @Override
         public void run () {
             Log.e("Log", "started thread");

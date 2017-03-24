@@ -99,28 +99,31 @@ public class Runner extends GameActor implements bluetoothConnector{
 
     public void jump(double dataIn2) {
 
-//        //changed up what jump method actually does
-//        if (!(jumping || hit) || dataIn2<0) {
-////            body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
-////            dodging = true;
-//            runner.stopDodge();
-//        }
+        //changed up what jump method actually does
+        if (!(jumping || hit) || dataIn2<0) {
+//            body.setTransform(getUserData().getDodgePosition(), getUserData().getDodgeAngle());
+//            dodging = true;
+            dodging = false;
+        }
+        if (!hit) {
+            body.setTransform(getUserData().getRunningPosition(), 0f);
+        }
 
-        if (!(jumping || dodging || hit)) {
-            body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
-            jumping = true;
-//            adding to this to levetate?
-//            body.setTransform(2,4,0);
-            AudioUtils.getInstance().playSound(jumpSound);
-            jumpCount++;
-            // ********************************************************************************************************************************8
-//            body.setTransform(getUserData().getJumpingLinearImpulse(), getUserData().getDodgeAngle()*-1);
+//        if (!(jumping || dodging || hit)) {
+//            body.applyLinearImpulse(getUserData().getJumpingLinearImpulse(), body.getWorldCenter(), true);
 //            jumping = true;
+////            adding to this to levetate?
+////            body.setTransform(2,4,0);
 //            AudioUtils.getInstance().playSound(jumpSound);
 //            jumpCount++;
-            //**********************************************************************************************************************************
-
-        }
+//            // ********************************************************************************************************************************8
+////            body.setTransform(getUserData().getJumpingLinearImpulse(), getUserData().getDodgeAngle()*-1);
+////            jumping = true;
+////            AudioUtils.getInstance().playSound(jumpSound);
+////            jumpCount++;
+//            //**********************************************************************************************************************************
+//
+//        }
 
     }
 

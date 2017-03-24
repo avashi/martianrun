@@ -383,7 +383,7 @@ public class GameStage extends Stage implements ContactListener {
         }
 
         if (rightSideTouched(touchPoint.x, touchPoint.y)) {
-            runner.stopDodge();
+            runner.jump(1);
             //will this make it float?
             //RUNNER_Y = 4;
 
